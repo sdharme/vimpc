@@ -188,7 +188,8 @@ void ScrollWindow::Print(uint32_t line) const
                // Speed up the rendering by printing as much as possible in one go
                uint32_t j;
                for(j=i; (j < output.size()) && (output[j] != '\\') && (output[j] != '$'); j++); // Find the first part we cannot print in one go...
-               waddnstr(window, &output[i], j-i);                                               // ... and print up till there.
+               uint32_t rem = Columns() - getcurx(window) - 1;
+               waddnstr(window, &output[i], rem < j-i && rem != 0 ? rem : j-i);                                               // ... and print up till there.
                i+=j-i-1;
             }
             break;
