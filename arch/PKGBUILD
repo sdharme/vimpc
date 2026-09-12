@@ -1,0 +1,44 @@
+_pkgname=vimpc
+pkgname="$_pkgname-git"
+pkgver=r1302.d991cff
+pkgrel=1
+pkgdesc='Vi/vim inspired client for Music Player Daemon (MPD)'
+arch=('x86_64')
+url="https://github.com/sdharme/vimpc"
+license=(GPL-3.0-or-later)
+depends=(
+    'curl'
+    'libmpdclient'
+    'ncurses'
+    'pcre'
+    'taglib'
+)
+makedepends=(
+    'cmake'
+    'git'
+)
+provides=('vimpc')
+conflicts=('vimpc')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+prepare() {
+    git -C "$srcdir/$_pkgname" clean -dfx
+}
+
+pkgver() {
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+    cmake -B build -S "$srcdir/$_pkgname"\
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+
+    cmake --build build
+}
+
+package() {
+    DESTDIR="$pkgdir" cmake --install build
+}
