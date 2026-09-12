@@ -11,11 +11,9 @@ Type `:help` in the client or see `doc/help.txt` for more details.
 
 ## Installation
 
-    ./autogen.sh
-    ./configure
-    make
-    # as root:
-    make install
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+    cmake --install build
 
 ## Dependencies
     * libmpdclient
