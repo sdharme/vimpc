@@ -1,0 +1,8 @@
+#pragma once
+
+#define PACKAGE_URL "@PACKAGE_URL@"
+#define PACKAGE_STRING "@PROJECT_NAME@ @PROJECT_VERSION@"
+#define HELP_DIRECTORY "@HELP_DIRECTORY@"
+
+#cmakedefine HAVE_EXECINFO_H
+#cmakedefine HAVE_SYS_IOCTL_H

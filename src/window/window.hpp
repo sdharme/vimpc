@@ -25,7 +25,7 @@
 #include <string>
 #include <vector>
 
-#include "wincurses.h"
+#include <ncurses.h>
 
 namespace Ui
 {

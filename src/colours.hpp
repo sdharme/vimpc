@@ -24,7 +24,7 @@
 #define BOLD(X) (8 + X)
 #define COLOR_DEFAULT -1
 
-#include "wincurses.h"
+#include <ncurses.h>
 
 namespace Main
 {

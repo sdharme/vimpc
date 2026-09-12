@@ -20,9 +20,8 @@
 
 #include "help.hpp"
 
-#ifndef HELP_DIRECTORY
-#define HELP_DIRECTORY ""
-#endif
+#include "config.h"
+
 
 #include "algorithm.hpp"
 #include "error.hpp"
